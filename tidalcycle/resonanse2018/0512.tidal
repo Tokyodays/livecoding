@@ -1,0 +1,80 @@
+cps (140/120)
+
+d1
+--  $jux (iter 4)
+--  $jux (iter 2)
+  $slow 2
+  $stack[
+      s "sine(5,8,{1,4})"
+      #speed "1 1.8 1 0.5"
+    {-
+    ,
+      s "sine(3,8,{2,4})"
+      #speed "2 1.5 0 0.5"
+    ,
+      s "sine(7,8,{3,4})"
+      #speed "1 0.5 0.5 2"
+    -}
+  ]
+   |+|n "0 7 -7"
+  -- #cutoff (scale 2000 18000 $slow 16 $sine1)
+  -- #resonance (scale 2000 18000 $slow 8 $sine1)
+  #sustain "2 5"
+  #gain "0.7"
+  #room "2"
+  #delay "0.5 1"
+  #delaytime "0.125 1"
+  #delayfeedback "0.3"
+
+d1 silence
+
+d2
+  $ every 4 (chop 16)
+  $ slow 2
+  $ n (off 0.125 (+12) $ off 0.25 (+7) $ "0(3,4) [2 7]")
+  # s "mouth"
+  # resonance 0
+  # sustain "0"
+  # gain "0.2"
+  # room "0"
+  # delay "0"
+  # delaytime "0"
+  # delayfeedback "0"
+
+d2 silence
+
+d3
+  $ jux (iter 3)
+  $ slow 1
+  $ sound "lighter(5,8,{2, 16})"
+  # gain "[0.5 1]"
+
+d3 silence
+
+d4
+  $ jux (iter 2)
+  $ every 3 (chop 16)
+  $ slow 4
+  $ n (off 0 (+1) $ "0(1,2) [2 7]")
+  # speed "[0.15 0.125 1]"
+  # s "trump:3"
+  # resonance 0
+  # sustain "1"
+  # gain "0.3"
+  # room "0"
+  # delay "0"
+  # delaytime "0"
+  # delayfeedback "0"
+
+d4 silence
+
+d5
+  $ slow 1
+  $ s "haw:2*2"
+  # speed "[3]"
+  # gain 0.6
+
+
+d5 silence
+
+hush

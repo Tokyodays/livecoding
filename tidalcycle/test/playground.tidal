@@ -64,16 +64,51 @@ d2
 d2 silence
 
 d1
-  $ sound "supersaw*12"
-  |=|n "0 1 2 3 4 5 6 7 8 9"
-  # gain "0.5"
-  # delay "0.8"
-  # speed "1"
+  $ sound "haw:1"
+  # n "0 7 12"
 
 hush
 
 d1
   -- $ (|=| speed "2")
   $ sound "arpy*4" |+| speed "2"
+
+hush
+
+cps (140/120)
+
+
+d1
+  -- $ jux(iter 4)
+  -- $ every 4(jux(rev)) (s "[bd cp] hh")
+  -- $ every 4(slow 2) (s "[bd cp] hh")
+  $ every 4(density 2) (s "[bd cp] hh") -- speed up
+
+d1
+$stack[
+  s "arpy(3,8, {1,4})"
+]
+-- $ slow 1
+-- $ n (off 0.125 (+12) $ off 0.25 (+7) $ "0(3,8) [5 7]")
+-- # n"[[c3,e4,g4]*2 [e3,g4,b3]*4]"
+-- #gain (every 3(rev) $"0.5 0.9")
+-- #speed 1
+#n "[[c4,e4,g4,c5]*4 [e4,g4,b5,e5]*4]"
+-- #n "0, 7, 10, 17, 19"
+-- #up (run 8)
+-- #delay "0.5 0.5"
+-- #delaytime "0.125 1"
+-- #delayfeedback "0.3"
+-- #room "0.7"
+
+d1 $ n (off 0.125 (+12) $ off 0.25 (+7) $ "0(3,8) [5 7]") # sound "arpy"
+
+-- d1 $ n (off 0.125 (+12) $ off 0.25 (+7) $ "0(3,8) [5 7]") # sound "arpy"
+
+d1 $ sound "arpy(3,8,{3, 4})" # n (run 4)
+
+d1 $ randcat [sound "bd*2 sn", sound "jvbass*3", sound "drum*2", sound "ht mt"]
+
+d1 $ n (slow 4 $ "[[c4]*4 [e4]*4]" + "<12 7>") # s "trump"
 
 hush

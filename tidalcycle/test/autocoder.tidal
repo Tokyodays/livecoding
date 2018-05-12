@@ -1,0 +1,7 @@
+do
+   d1 $
+      every 6 (((|=| delay "0.3") . (|=| delaytime "0.001 0.001 0.001 0.001") . (|=| delayfeedback "0.4 0.2"))) $
+      every 6 (|=| shape "0.2 0.2 0.5 0.5") $
+      slow 2 $ s "b*2 ch*4 k*8 b*1 "
+      |=| n (every 1 (0.25 <~) $ every 2 (0.25 <~) $ "8 2")
+      |=| cut "4 3 2 2"
