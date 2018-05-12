@@ -1,0 +1,79 @@
+
+
+d1
+  -- $ jux (iter 4)
+  -- $ every 4 (chop 16)
+  -- $ every 6 (gap 32)
+  $ stack[
+    -- sound "bd:3 [sn:1*2] ~ bd:3" |+| gain "1.0",
+    -- sound "bass ~ bass:3 ~" |+| gain "1.2",
+    sound "[~ cp]*4" # gain "0.9" # pan rand
+  ]
+
+d1 silence
+
+d1 $ seqP [
+  (0, 12, sound "bd bd*2"),
+  (4, 12, sound "hh*2 [sn cp] cp future*4"),
+  (8, 12, sound (samples "arpy*8" (run 16)))
+]
+
+d1 $ slow 1 $ striate' 32 0.2 $ sound "bd"
+
+d1 $ sound "bd sn"
+
+d1 $ sound "alone:7"
+
+hush
+
+d1 silence
+
+
+do
+   d1
+    -- $ whenmod 6 2 (stut' 1 (0.0625/2) (|*| speed "1.5"))
+    -- $ whenmod 5 2 (|=| accelerate "-0.5 -1")
+    -- $ every 2 (slow 2)
+    -- $ slow 1
+    $ s "peri*4 b*1 peri*4 ch*4 "
+    |=| n (every 2 (density 2) $ "1 4 5")
+    |=| cut "-1"
+    -- #cutoff (scale 2000 18000 $slow 16 $sine1)
+    -- #resonance "0.4"
+    -- #sustain "0.15 0.05"
+    -- #gain "1.0"
+
+d1 silence
+
+d2
+  $jux (iter 4)
+  $jux (iter 2)
+  $stack[
+    -- s "supersaw(7,8,4)" #n "{0, 7, 10, 17, 19}" #speed "1.5" #pan (rand),
+    -- s "supersaw(7,8,2)" #n "{0, 7, 10, 17, 19}" #speed "1.0" #pan (rand),
+    -- s "supersaw(3,8,7)" #n "{0, 7, 10, 17, 19}" #speed "0.75" #pan (rand),
+    -- s "supersaw(3,8,5)" #n "{0, 7, 10, 17, 19}" #speed "0.5" #pan (rand),
+    s "supersaw(3,8,3)" #n "{0, 7, 10, 17, 19}" #speed "2"
+  ]
+  -- |+|n "0 7 -7 12 -12"
+  -- #cutoff (scale 2000 18000 $slow 16 $sine1)
+  -- #resonance "0.4"
+  -- #sustain "0.15 0.05"
+  -- #gain "1.0"
+
+d2 silence
+
+d1
+  $ sound "supersaw*12"
+  |=|n "0 1 2 3 4 5 6 7 8 9"
+  # gain "0.5"
+  # delay "0.8"
+  # speed "1"
+
+hush
+
+d1
+  -- $ (|=| speed "2")
+  $ sound "arpy*4" |+| speed "2"
+
+hush

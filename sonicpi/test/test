@@ -1,0 +1,29 @@
+# Loading previous buffer contents. Please wait...
+
+
+live_loop :live do
+  with_fx :reverb do
+    with_fx :echo, phase:0.5 do
+      with_fx :slicer, phase: 0.75,decay: 8 do
+        use_synth :sine
+        play [choose([:c3, :f3, :g3, :bf3]),choose([:c4, :f4, :g4, :bf4])],sustain:0.1,decay:0,attack:rrand(1,2),release:rrand(0,1),slide:rrand(0,0.5),amp:rrand(0,2)
+        sleep choose([0.125, 1, 0.5])
+      end
+    end
+  end
+end
+
+
+
+live_loop :aaaa do
+  use_synth :square
+  play_pattern chord(:c5, :m7), amp:0.01
+end
+
+live_loop :bbb do
+  with_fx :wobble,phase:0.5 do
+    use_synth :pulse
+    play :c3,decay:0,release:rrand(0,0.1),amp:rrand(0,1),slide:2,pan:choose([-1,1,0])
+    sleep choose([0.125, 0.125,0.125,0.25])
+  end
+end
