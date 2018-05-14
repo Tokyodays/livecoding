@@ -1,0 +1,15 @@
+cps (76/120)
+
+d1
+  $stack[
+      s "led*12"
+      #speed 4
+  ]
+
+
+d1 silence
+
+--blip
+--f
+--flick
+--jvbass

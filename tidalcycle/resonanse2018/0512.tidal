@@ -7,14 +7,12 @@ d1
   $stack[
       s "sine(5,8,{1,4})"
       #speed "1 1.8 1 0.5"
-    {-
     ,
       s "sine(3,8,{2,4})"
       #speed "2 1.5 0 0.5"
     ,
       s "sine(7,8,{3,4})"
       #speed "1 0.5 0.5 2"
-    -}
   ]
    |+|n "0 7 -7"
   -- #cutoff (scale 2000 18000 $slow 16 $sine1)
@@ -35,7 +33,7 @@ d2
   # s "mouth"
   # resonance 0
   # sustain "0"
-  # gain "0.2"
+  # gain "0.6"
   # room "0"
   # delay "0"
   # delaytime "0"
@@ -53,14 +51,14 @@ d3 silence
 
 d4
   $ jux (iter 2)
-  $ every 3 (chop 16)
+  $ every 3 (chop 8)
   $ slow 4
   $ n (off 0 (+1) $ "0(1,2) [2 7]")
-  # speed "[0.15 0.125 1]"
-  # s "trump:3"
+  # speed "[0.15 0.125]"
+  # s "trump:6"
   # resonance 0
-  # sustain "1"
-  # gain "0.3"
+  # sustain "2"
+  # gain "0.7"
   # room "0"
   # delay "0"
   # delaytime "0"
