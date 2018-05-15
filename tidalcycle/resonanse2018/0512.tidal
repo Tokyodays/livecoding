@@ -33,7 +33,7 @@ d2
   # s "mouth"
   # resonance 0
   # sustain "0"
-  # gain "0.2"
+  # gain "0.6"
   # room "0"
   # delay "0"
   # delaytime "0"
@@ -51,14 +51,14 @@ d3 silence
 
 d4
   $ jux (iter 2)
-  $ every 3 (chop 16)
+  $ every 3 (chop 8)
   $ slow 4
   $ n (off 0 (+1) $ "0(1,2) [2 7]")
-  # speed "[0.15 0.125 1]"
-  # s "trump:3"
+  # speed "[0.15 0.125]"
+  # s "trump:6"
   # resonance 0
-  # sustain "1"
-  # gain "0.3"
+  # sustain "2"
+  # gain "0.7"
   # room "0"
   # delay "0"
   # delaytime "0"
