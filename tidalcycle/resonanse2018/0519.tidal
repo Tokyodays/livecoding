@@ -1,11 +1,13 @@
-cps (76/120)
+cps (96/120)
 
 d1
-  $stack[
-      s "jvbass*6"
-      #speed 1
-      #sustain 0.4
+  $ stack[
+    -- sound "bd:3 [sn:1*2] ~ bd:3" |+| gain "1.0",
+    -- sound "bass ~ bass:3 ~" |+| gain "1.2",
+    $ n "0" # s "sine" # speed 1.125,
+    $ n "0" # s "sine" # speed 0.75
   ]
+
 
 
 d1 silence
