@@ -2,13 +2,16 @@ cps (76/120)
 
 d1
   $stack[
-      s "led*12"
-      #speed 4
+      s "jvbass*6"
+      #speed 1
+      #sustain 0.4
   ]
 
 
 d1 silence
 
+--sax
+--newnotes
 --blip
 --f
 --flick
