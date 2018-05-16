@@ -1,4 +1,6 @@
+d1 $ up "-7 0 7 12" # sound "sine"
 
+hush
 
 d1
   -- $ jux (iter 4)
