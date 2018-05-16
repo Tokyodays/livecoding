@@ -1,17 +1,62 @@
-cps (96/120)
+cps (120/120)
 
 d1
   $ stack[
-    -- sound "bd:3 [sn:1*2] ~ bd:3" |+| gain "1.0",
-    -- sound "bass ~ bass:3 ~" |+| gain "1.2",
-    $ n "0" # s "sine" # speed 1.125,
-    $ n "0" # s "sine" # speed 0.75
+    n "0*6" # s "sine" # speed (1.125),
+    n "0*6" # s "sine" # speed (0.84375 * 2),
+    n "0*6" # s "sine" # speed (0.6328125 * 2)
+  ]
+  #gain 0.7
+  #sustain 0.1
+
+d2
+  $ stack [
+    n "8*6" # s "pluck" # speed "[0.888888 1]*3",
+    n "8*6" # s "pluck" # speed "[0.666666 0.75]*3"
+  ]
+  #gain 1.2
+
+d3
+  -- $ slow 4
+  $ stack [
+    n "{0, 5}*6" # s "jvbass"
+  ]
+  # speed "1.0625 1.416663125 1.59375 1.888883694445625 2.1249946875 2.518510962966269"
+  #gain 1
+
+d4
+  $ stack [
+    n "0*6" # s "blip" #gain 0.6 # speed "1.5 0.666666 0.75 0.888888 1 1.333333"
+  ]
+  #gain 1
+
+d4 silence
+
+d5
+  $ stack [
+    n "0*3" # s "oc",
+    n "0*3" # s "cr:4" #gain 0.7
   ]
 
+d6
+  $ stack [
+    n "1*3" # s "sax" # speed "4",
+    n "1*3" # s "sax" # speed "2.666666",
+    n "1*3" # s "sax" # speed "3.55555"
+  ]
+  # gain 0.7
+
+-- 5.333332
+-- 3
+-- 4.5
+-- 3.555555
+-- 2
 
 
-d1 silence
+hush
 
+--pluck
+--moog
 --sax
 --newnotes
 --blip
