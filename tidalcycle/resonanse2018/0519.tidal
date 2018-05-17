@@ -25,6 +25,7 @@ d3
   #gain 1
 
 d4
+  $ loopAt 2
   $ s "blip*6"
   # up "7 -7 -5 -2 0 5"
   #gain 1
