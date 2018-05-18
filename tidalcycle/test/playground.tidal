@@ -1,4 +1,12 @@
-d1 $ up "-7 0 7 12" # sound "sine"
+d1 $ spin 2 $ sound "drum*3 tabla:4 [arpy:2 ~ arpy] [can:2 can:3]"
+
+d1 $ sometimesBy 0.75 (# crush 4) $ sound "bd arpy sn ~"
+
+
+d1 $ zoom (0.25, 0.75) $ sound "bd*2 hh*3 [sn bd]*2 drum"
+
+d1 $ every 4 (zoom (0.25, 0.75)) $ sound "bd*2 hh*3 [sn bd]*2 drum"
+
 
 hush
 
