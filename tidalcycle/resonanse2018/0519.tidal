@@ -27,7 +27,7 @@ d3
   # gain 1
 
 d4
-  -- $spin 2
+  -- $spin 2 --6  --4 --12
   -- $ jux (iter 3)
   $ s "blip*6"
   # up "7 -7 -5 -2 0 5"
