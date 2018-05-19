@@ -19,7 +19,7 @@ let p5Shape = dirt {cpsStamp = False, latency = 0.4}
 
 x1 <- combinedStream
 
-let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,x1]
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,x1]
 
 let solo = (>>) hush
 
@@ -27,3 +27,10 @@ x1 $ (every 3 (fast 2) $ chunk 4 (hurry 2) $ sound "<bd mt lt>(3,8)")
   # pan sine
   # speed 2
 
+x1 $sound "ifdrums*8"
+#n (irand 12)
+#cutoff(scale 400 10000 $slow 16 $rand)
+#pan sine
+#gain (scale 0.5 1.5 $slow 8 $ rand)
+
+hush

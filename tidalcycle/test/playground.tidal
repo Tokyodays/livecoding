@@ -1,3 +1,9 @@
+d1 $s "superpiano(3, 8, {0, 2, 4})" #n "{0, 7}" #gain (rand)
+|+| n "<0 5 -5 7 -7>"
+
+
+hush
+
 d1 $ spin 2 $ sound "drum*3 tabla:4 [arpy:2 ~ arpy] [can:2 can:3]"
 
 d1 $ sometimesBy 0.75 (# crush 4) $ sound "bd arpy sn ~"

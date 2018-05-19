@@ -1,0 +1,76 @@
+
+import Sound.Tidal.OscStream
+
+
+let p5Shape = dirt {cpsStamp = False, latency = 0.4}
+    p5Slang = superDirtSlang {timestamp = NoStamp,
+                              preamble = []
+                             }
+    p5Stream = do
+      s <- makeConnection "127.0.0.1" 1818 p5Slang
+      stream (Backend s $ (\_ _ _ -> return ())) p5Shape
+    (scene, _) = pS "scene" Nothing
+    combinedStream = do p5 <- p5Stream
+                        ds <- superDirtState 57120
+                        let d = setter ds
+                        return $ \p -> do p5 p
+                                          d p
+
+
+x1 <- combinedStream
+
+x2 <- combinedStream
+
+x3 <- combinedStream
+
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,x1]
+
+let solo = (>>) hush
+
+
+cps (120/120)
+
+a = 0
+
+x1
+  -- $ swingBy (1/2) 3
+  -- $ fastspread slow [2,4/3]
+  -- $ chunk 4 (hurry 1)
+  -- $ slow "<3 4>"
+  -- $ iter 2
+  -- $ shuffle 1
+  $ degradeBy 0.5
+  -- $palindrome
+  -- $every 3(rev)
+  $s "superpiano(3, 8, {2, 4})"
+  #n "[[-5, 0, 9][-3, 0, 7]]"
+  |+| n a
+  #gain ((rand / 2) + 0.5)
+  #pan rand
+  #room "0.4"
+  #delay "0.4 1"
+  #delaytime "0.125 1"
+  #delayfeedback "0.2"
+
+x2
+  $slow 2
+  -- $ iter 2
+  $ degrade
+  $palindrome
+  $every 2(|+| n "<5>")
+  $s "superpiano*8"
+  #n "[-12 -14 -17 -19 ~ ~ ~ ~]"
+  |+| n a
+
+x3
+  -- $ iter 2
+  -- $slow 4
+  $ degrade
+  $palindrome
+  $every (irand 4)(|+| n "<5>")
+  $s "superpiano*3 ~ ~ ~ ~ ~"
+  # n (choose [-24, -10, -9])
+  |+| n a
+
+
+hush

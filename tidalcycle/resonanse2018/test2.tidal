@@ -16,7 +16,7 @@ d2
 
 d3
   $slow 1
-  $stut 1 2 0
+  $stut 1 1 0
   $stack [
     --s "{jvbass:0, jvbass:5}*6" #up "1 6 8 11 13 16",
     s "{jvbass:0, jvbass:5}*6" #up "{[-11 -6 -4 -1 1 4], [1 6 8 11 13 16]}"
@@ -30,8 +30,8 @@ d4
   $jux(iter 3)
   $s "blip*6"
   #up "7 -7 -5 -2 0 5"
-  #gain 0
-  #lpq 0.3
+  #gain 1
+  #lpq 0.8
   #cutoff (scale 500 8000 $slow 8 $sine1)
   #pan (rand)
 
