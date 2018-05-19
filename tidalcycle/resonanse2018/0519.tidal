@@ -8,8 +8,6 @@ d1
   ]
   #gain 1
 
-d1 silence
-
 d2
   $ stack [
     n "8*6" # s "pluck" # up "[-7 -5]*3" #pan(1),
@@ -17,13 +15,9 @@ d2
   ]
   # gain 1
 
-hush
-
-d2 silence
-
 d3
-  $ slow 1
-  $ stut 1 4 0
+  -- $ slow 1
+  -- $ stut 1 4 0
   $stack[
     s "{jvbass:0, jvbass:5}*6" # up "1 6 8 11 13 16",
     s "{jvbass:0, jvbass:5}*6" # up "-11 -6 -4 -1 1 4"
@@ -32,35 +26,26 @@ d3
   #cutoff 300
   # gain 1
 
-d3 silence
-
 d4
-  $spin 2
-  $ jux (iter 3)
+  -- $spin 2
+  -- $ jux (iter 3)
   $ s "blip*6"
   # up "7 -7 -5 -2 0 5"
   # gain 1
-  # lpq 0.3
-  # cutoff (scale 500 8000 $slow 8 $sine1)
-  #pan (rand)
-
-
-d4 silence
+  -- # lpq 0.3
+  -- # cutoff (scale 500 8000 $slow 8 $sine1)
+  -- #pan (rand)
 
 d5
   $ stack [
-    every 4(linger 0.5)(palindrome(s "perc:5(3,{3,6})")) # gain (choose[0.6, 1,1,1]) #pan(rand),
-     every 4(linger 0.25)(palindrome(s "cp:4(5,{6,12})")) # gain (choose[0.6, 1,1,1]) #pan(rand),
     n "0*3" # s "oc:0" # gain 0.9,
     n "0*3" # s "cr:4" # gain 0.7
   ]
 
 d6
   $ stack [
---     n "1*3" # s "sax" # up 16,
+--     n "1*3" # s "sax" # up 24,
     n "1*3" # s "sax" # up 17 #pan 1,
     n "1*3" # s "sax" # up 19 #pan 0
   ]
   # gain 0.5
-
-hush
