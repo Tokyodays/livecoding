@@ -2,24 +2,28 @@ cps (140/120)
 
 d1
 --  $jux (iter 4)
---  $jux (iter 2)
+--   $jux (iter (irand 4))
   $slow 2
+  -- $sometimesBy 0.4 (slow 0.25)
+  -- $degrade
+  -- $palindrome
+  $ degradeBy 0
   $stack[
-      s "newnotes(5,8,{1,4})"
+      s "newnotes(5,8,{1,2})"
       #speed "1 1.8 1 0.5"
-    -- ,
-    --   s "sine(3,8,{2,4})"
-    --   #speed "2 1.5 0 0.5"
-    -- ,
-    --   s "sine(7,8,{3,4})"
-    --   #speed "1 0.5 0.5 2"
+    ,
+      s "sine(3,8,{2,4})"
+    #speed "2 1.5 0 0.5"
+    ,
+      s "sine(7,8,{3,2})"
+       #speed "1 0.5 0.5 2"
   ]
-   |+|n "0 7 -7"
-  -- #cutoff (scale 2000 18000 $slow 16 $sine1)
-  -- #resonance (scale 2000 18000 $slow 8 $sine1)
+   -- |+|n "5 10 -2"
+   #cutoff (scale 300 18000 $slow 6 $sine1)
+   #resonance (scale 200 18000 $slow 8 $sine1)
   #sustain "2 5"
   #gain "0.7"
-  #room "2"
+  #room "1"
   #delay "0.5 1"
   #delaytime "0.125 1"
   #delayfeedback "0.3"
@@ -28,12 +32,13 @@ d1 silence
 
 d2
   $ every 4 (chop 16)
-  $ slow 2
-  $ n (off 0.125 (+12) $ off 0.25 (+7) $ "0(3,4) [2 7]")
+  $ degradeBy 0
+  $ slow 8
+ $ n (off 0.125 (+12) $ off 0.25 (+7) $ "0(2,6) [7 2]")
   # s "mouth"
-  # resonance 0
-  # sustain "0"
-  # gain "0.6"
+  # resonance 1000
+  # sustain "0.5"
+  # gain "0.8"
   # room "0"
   # delay "0"
   # delaytime "0"
@@ -45,14 +50,15 @@ d3
   $ jux (iter 3)
   $ slow 1
   $ sound "lighter(5,8,{2, 16})"
-  # gain "[0.5 1]"
+  # gain "[0.5 0.8]"
 
 d3 silence
 
 d4
   $ jux (iter 2)
-  $ every 3 (chop 8)
-  $ slow 4
+  $ every 3 (chop 16)
+  $ slow 8
+  -- $ n (off 0 (+1) $ "0(1,2) [2 7]")
   $ n (off 0 (+1) $ "0(1,2) [2 7]")
   # speed "[0.15 0.125]"
   # s "trump:6"
@@ -69,9 +75,9 @@ d4 silence
 d5
   $ slow 1
   $ s "haw:2*2"
-  # speed "[3]"
-  # gain 0.6
-
+  # speed 4
+  # gain (scale 0.4 0.6 $slow 9 $sine1)
+  #pan (scale 0 1 $slow 16 $sine1)
 
 d5 silence
 
