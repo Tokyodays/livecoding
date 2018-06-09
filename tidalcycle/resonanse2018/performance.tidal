@@ -23,7 +23,7 @@ x2 <- combinedStream
 
 x3 <- combinedStream
 
-let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,x1]
+let hush = mapM_ ($ silence) [d1,d2,d3,d4,d5,d6,d7,d8,d9,x1, x2, x3]
 
 let solo = (>>) hush
 
@@ -33,15 +33,15 @@ cps (120/120)
 a = 0
 
 x1
-  -- $ swingBy (1/2) 3
-  -- $ fastspread slow [2,4/3]
-  -- $ chunk 4 (hurry 1)
-  -- $ slow "<3 4>"
-  -- $ iter 2
+  $ swingBy (1/2) 3
+  $ fastspread slow [2,4/3]
+  $ chunk 4 (hurry 1)
+  $ slow "<1 1 2>"
+  $ iter 1
   -- $ shuffle 1
-  $ degradeBy 0.5
-  -- $palindrome
-  -- $every 3(rev)
+  $ degradeBy 0.9
+  $palindrome
+  $every 3(rev)
   $s "superpiano(3, 8, {2, 4})"
   #n "[[-5, 0, 9][-3, 0, 7]]"
   |+| n a
@@ -56,21 +56,24 @@ x2
   $slow 2
   -- $ iter 2
   $ degrade
+  $ degradeBy 0.9
   $palindrome
-  $every 2(|+| n "<5>")
+  $every 2(|+| n "<4>")
   $s "superpiano*8"
   #n "[-12 -14 -17 -19 ~ ~ ~ ~]"
   |+| n a
 
 x3
-  -- $ iter 2
+  $ iter 1
   -- $slow 4
-  $ degrade
+  -- $ degrade
+  $ degradeBy 0.9
   $palindrome
   $every (irand 4)(|+| n "<5>")
   $s "superpiano*3 ~ ~ ~ ~ ~"
   # n (choose [-24, -10, -9])
   |+| n a
 
+-- x1 silence
 
 hush
