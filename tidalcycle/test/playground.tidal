@@ -1,6 +1,15 @@
 d1 $s "superpiano(3, 8, {0, 2, 4})" #n "{0, 7}" #gain (rand)
 |+| n "<0 5 -5 7 -7>"
 
+d1 $ n "[c2 e3 g4 c5 c4 c3]" # s "[superstatic]"
+
+d1 $ s "supernoise/8" # midinote ((irand 10) + 30) # sustain "8"
+ # accelerate "0.5" # voice "0.5" # pitch1 "0.15" # slide "-0.5" # resonance "0.7"
+ # attack "1" # release "20" # room "0.9" # size "0.9" # orbit "1"
+
+
+d2 $ every 4 (echo (negate 3/32)) $ n "c5*4" # s "violin"
+  # accelerate "-2" # speed "1" # sustain "0.1 ! ! 1" # voice "0.0"
 
 hush
 
@@ -36,7 +45,7 @@ d1 $ seqP [
 
 d1 $ slow 1 $ striate' 32 0.2 $ sound "bd"
 
-d1 $ sound "bd sn"
+d1 $ sound "violin"
 
 d1 $ sound "alone:7"
 
