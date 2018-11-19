@@ -9,3 +9,13 @@ scsynth
 に拡張シンセがある
 
 /Users/takeshi/Library/Application Support/SuperCollider/downloaded-quarks/SuperDirt/synths/try-load-extra-synths.scd
+
+~midiOut = MIDIOut.newByName("IAC ドライバ", "バス 1"); // substitute your own device here
+
+~dirt.soundLibrary.addMIDI(\midi, ~midiOut);
+
+
+
+~dirt = SuperDirt(2, s);
+
+~dirt.start()

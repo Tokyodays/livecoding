@@ -1,0 +1,98 @@
+-- type signatures
+
+:t fast
+
+-- fast :: Pattern Time -> Patten a -> Pattern a
+
+d1 $ sound (fast 2 "bd sn kurt")
+  # fast 3 (vowel "a e o")
+
+:t every
+
+d1 $ every 4 (fast 2) $ sound "bd sn"
+
+$ -- joining a function with a single parameter / value
+
+d1 (sound "bd sn")
+
+d1 sound "bd sn" -- dont work
+
+# -- joining together / combining patterns
+
+d1 $ sound "a e i o" # speed 2
+
+d1 $ speed "[2 3 4 5 6 0 3, 0,4 0,2]" # (sound "bd sn")
+
+. -- joining together functions
+
+d1 $ every 2 rev $ every 2 ( chop 8) $ every 2 (fast 4) $ sound "bd sn:2"
+
+d1 $ every 2 (rev . chop 8 . fast 4) $ sound "bd sn:2"
+
+
+-- version 1.0
+
+d1 $ (chop 16 $ sound "drum:2 drum")
+  #cps (slow 8 $ sine + 1)
+
+-- # is alias for |>
+
+d1 $ (chop 16 $ sound "drum:2 drum")
+  |> cps (slow 8 $ sine + 1)
+
+d1 $ sound "bd sn" |> speed "1 2 3"
+
+d1 $ sound "bd sn" >| speed "1 2 3"
+
+-- 左が無視
+d1 $ speed "1 2" >| speed "3 4 5" # sound "bd sn"
+
+-- structure form right, value left
+d1 $ speed "1 2" |> speed "3 4 5" # sound "bd sn"
+
+-- structure form left, value ritgh
+d1 $ speed "1 2" <| speed "3 4 5" # sound "bd sn"
+
+-- 両方
+d1 $ speed "1 2" |<| speed "3 4 5" # sound "bd sn"
+
+
+-- これで結果がでる
+-- n ("2 3" + "4 5 6") + s "bd sn"
+
+d1 $ off 0.25 (|* speed 2) $ sound "gabba(3,8)"
+
+once $ sound "airhorn"
+
+hush
+
+-- midi
+
+d1 $ (fast(cT 1 "22" * 8)) $ sound "bd" # speed (scale 1 2)
+#cps (cF 1 " 23" * 2)
+
+
+d1 $ every "<3 4>" (fast 2) $sound "bd*8"
+
+d1 $ compress (0,1/2) $ sound "bd*8"
+
+--wchoose
+
+d1 $ sound "supermandolin*8" # n (
+    wchoose [(0,1),(0,2),(0,1),(0,2),(0,1),(8,12)]
+  )# gain 1 # legato 2
+
+-- scan
+d1 $ jux (rev . (0.25 <~)) $ n (scan 8) # sound "sn" # speed 2
+
+d1 $ n (scan 3) # sound "drum"
+
+d1 $ n (run 8) # sound "drum"
+
+--same
+
+d1 $ n ("0 .. 7") # sound "drum"
+
+d1 $ fast (iter 4 "1 [2 4]") $ sound "midi*8"
+
+hush
