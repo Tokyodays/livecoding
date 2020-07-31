@@ -1,3 +1,9 @@
+cps 1
+
+d1 $ every 4 (fast 2) $ sound "can:3 sn"
+
+hush
+
 -- type signatures
 
 :t fast
